@@ -10,18 +10,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Assests\WkHtmlToPdf\wkhtmltopdf.exe" />
-    <None Remove="Assests\WkHtmlToPdf\wkhtmltox.dll" />
+    <None Remove="Assets\WkHtmlToPdf\wkhtmltopdf.exe" />
+    <None Remove="Assets\WkHtmlToPdf\wkhtmltox.dll" />
     <None Remove="Template\algo-logo-2x.png" />
     <None Remove="Template\index.html" />
     <None Remove="Template\styles.css" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Assests\WkHtmlToPdf\wkhtmltopdf.exe">
+    <Content Include="Assets\WkHtmlToPdf\wkhtmltopdf.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assests\WkHtmlToPdf\wkhtmltox.dll">
+    <Content Include="Assets\WkHtmlToPdf\wkhtmltox.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Template\algo-logo-2x.png">
