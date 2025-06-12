@@ -237,25 +237,28 @@
     <center>
         <table class="border , width-501" style="margin-left: 11.325pt;border-collapse:collapse;margin-left:11.325pt" cellspacing="0">
             <tbody>
+                <!-- Start Dev Section: Company Name and Logo Side by Side -->
                 <tr>
-                    <td colspan="4" class="gray center s1">ALGOMUS PRIVATE LIMITED</td>
+                    <td colspan="4">
+                        <table width="100%" style="border-collapse: collapse;">
+                            <tr>
+                                <!-- Company Logo -->
+                                <td style="width: 20%; text-align: left;">
+                                    <img class="logo-img" src="data:image/png;base64,{{LogoBase64}}" alt="Company Logo" />
+                                </td>
+                                <!-- Company Name and Salary Slip Info -->
+                                <td style="text-align: center;">
+                                    <div class="s1">ALGOMUS PRIVATE LIMITED</div>
+                                    <div class="s2">SALARY SLIP FMO {{PayMonth}} {{PayYear}}</div>
+                                </td>
+                                <!-- Empty placeholder (for future or spacing) -->
+                                <td style="width: 20%;"></td>
+                            </tr>
+                        </table>
+                    </td>
                 </tr>
-                <tr>
-                    <td colspan="4" class="gray center s2">SALARY SLIP FMO {{PayMonth}} {{PayYear}}</td>
-                </tr>
+                <!-- End Dev Section -->
                 <tr class="section-divider">
-                    <td colspan="2" class="logo center" style="border-right: 2pt solid black;">
-                        <!-- Replace with base64 or URL image if needed -->
-
-                        <centre> <img style="float:left;width:42px;height:42px;" src="data:image/png;base64,{{LogoBase64}}" alt="Company Logo" /></centre>
-                    </td>
-                    <td colspan="2" class="logo center" >
-                        
-
-                       
-                    </td>
-                </tr>
-                <tr >
                     <td class="s2">Employee ID</td>
                     <td class="s3 right" style="border-right: 2pt solid black;">{{EmployeeID}}</td>
                     <td class="s2">Designation</td>
@@ -297,7 +300,7 @@
                 </tr>
 
                 <!-- Main earnings/deductions -->
-                <tr class="section-divider" >
+                <tr class="section-divider">
                     <td>GROSS PAY</td>
                     <td class="right" style="border-right: 2pt solid black;">{{GrossSalaryFMO}}</td>
                     <td>INCOME TAX</td>
@@ -371,7 +374,7 @@
                     <td colspan="3" class="right">NET EARNINGS</td>
                     <td class="right">{{NetSalariesPayable}}</td>
                 </tr>
-            <tbody>
+<tbody>
             <tfoot>
                 <tr>
                     <td colspan="4">
