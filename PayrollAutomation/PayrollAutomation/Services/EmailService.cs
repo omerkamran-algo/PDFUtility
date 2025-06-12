@@ -12,9 +12,9 @@ namespace PayrollAutomation.Services
 {
     internal class EmailService
     {
-        private static readonly string apiKey = "YOUR_SENDGRID_API_KEY";
-        private static readonly string fromEmail = "your-email@yourdomain.com";
-        private static readonly string fromName = "HR Department";
+        private static readonly string apiKey = "";
+        private static readonly string fromEmail = "";
+        private static readonly string fromName = "";
 
         public static async Task<string> SendEmailAsync(Email email)
         {
