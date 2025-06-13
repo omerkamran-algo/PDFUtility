@@ -43,7 +43,7 @@ namespace PayrollAutomation.Services
             string tempHtmlPath = Path.Combine(Path.GetTempPath(), fileName.Replace(".pdf", ".html"));
             File.WriteAllText(tempHtmlPath, filledHtml);
 
-            string exePath = @"D:\OFFICE\Utility\PayrollAutomation\PayrollAutomation\PayrollAutomation\Assests\WkHtmlToPdf\wkhtmltopdf.exe";//Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "WkHtmlToPdf", "wkhtmltopdf.exe");
+            string exePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "WkHtmlToPdf", "wkhtmltopdf.exe");
             if (!File.Exists(exePath))
             {
                 System.Windows.MessageBox.Show("wkhtmltopdf.exe not found.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);

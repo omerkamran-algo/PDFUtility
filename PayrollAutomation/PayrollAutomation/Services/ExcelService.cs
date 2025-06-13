@@ -33,6 +33,25 @@ namespace PayrollAutomation.Services
                     }
                 }
 
+                // Validate required columns
+                var requiredColumns = new[]
+                {
+                "Sr.No", "Employee Name", "Payment Mode", "Employee ID", "Designation", "Department", "Grade",
+                "Pay Month", "Pay Location", "CNIC No.", "NTN",
+                "Gross Salary FMO April", "Arrears", "Bonus", "Total",
+                "Tax Deduction from Salary", "Tax Deduction",
+                "Mess Deduction", "Other Deduction", "EOBI", "Total Deduction",
+                "Fuel", "OPD", "Other", "Net Salaries Payable"
+                };
+
+                foreach (var col in requiredColumns)
+                {
+                    if (!headerMap.ContainsKey(col))
+                    {
+                        return $"The column '{col}' is missing or incorrect in the Excel file. Please correct it.";
+                    }
+                }
+
                 var lastRow = worksheet.LastRowUsed().RowNumber();
                 for (int row = dataStartRow; row <= lastRow; row++)
                 {
@@ -56,20 +75,20 @@ namespace PayrollAutomation.Services
                         Deptt = worksheet.Cell(row, headerMap["Department"]).GetString(),
                         Grade = worksheet.Cell(row, headerMap["Grade"]).GetValue<string>() ?? string.Empty,
                         PayMonth = worksheet.Cell(row, headerMap["Pay Month"]).GetValue<string>() ?? string.Empty,
-                        PayLocation = worksheet.Cell(row, headerMap["Pay Location"]).GetValue<string>()?? string.Empty,
-                        CNIC = worksheet.Cell(row,headerMap["CNIC No."]).GetValue<string>()??string.Empty, 
-                        NTN = worksheet.Cell(row, headerMap["NTN"]).GetValue<string>()??string.Empty,
-                        
+                        PayLocation = worksheet.Cell(row, headerMap["Pay Location"]).GetValue<string>() ?? string.Empty,
+                        CNIC = worksheet.Cell(row, headerMap["CNIC No."]).GetValue<string>() ?? string.Empty,
+                        NTN = worksheet.Cell(row, headerMap["NTN"]).GetValue<string>() ?? string.Empty,
+
                         //Earnings
                         GrossSalaryFMO = ParseDecimal(worksheet.Cell(row, headerMap["Gross Salary FMO April"]).GetString()),
                         Arrears = ParseDecimal(worksheet.Cell(row, headerMap["Arrears"]).GetString()),
                         Bonus = ParseDecimal(worksheet.Cell(row, headerMap["Bonus"]).GetString()),
                         TotalEarnings = ParseDecimal(worksheet.Cell(row, headerMap["Total"]).GetString()),
-                        
+
                         //Tax Decductaion
                         IncomeTaxDeduction = ParseDecimal(worksheet.Cell(row, headerMap["Tax Deduction from Salary"]).GetString()),
-                        ProfessionalTax = ParseDecimal(worksheet.Cell( row, headerMap["Tax Deduction"]).GetString()),
-                        
+                        ProfessionalTax = ParseDecimal(worksheet.Cell(row, headerMap["Tax Deduction"]).GetString()),
+
                         //Other deduction
                         MessDeduction = ParseDecimal(worksheet.Cell(row, headerMap["Mess Deduction"]).GetString()),
                         OtherDeductions = ParseDecimal(worksheet.Cell(row, headerMap["Other Deduction"]).GetString()),
