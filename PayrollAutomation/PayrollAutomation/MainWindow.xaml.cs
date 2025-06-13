@@ -20,7 +20,7 @@ namespace PayrollAutomation
             lvStatus.ItemsSource = statusList;
         }
 
-        private async  void Browse_Click(object sender, RoutedEventArgs e)
+        private async void Browse_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new WinForms.OpenFileDialog
             {
@@ -73,6 +73,13 @@ namespace PayrollAutomation
             string folderPath = dialog.SelectedPath;
             statusList.Clear();
 
+            // Safely read checkbox value on UI thread before background task
+            bool sendEmail = false;
+            await Dispatcher.InvokeAsync(() =>
+            {
+                sendEmail = chkSendEmail.IsChecked == true;
+            });
+
             // Run the PDF generation logic on a background task
             await Task.Run(async () =>
             {
@@ -86,7 +93,7 @@ namespace PayrollAutomation
                         string pdfPath = PdfService.GeneratePdf(emp, folderPath);
                         string status = string.IsNullOrEmpty(pdfPath) ? "Failed" : "PDF Generated";
 
-                        if (chkSendEmail.IsChecked == true && !string.IsNullOrEmpty(pdfPath))
+                        if (sendEmail && !string.IsNullOrEmpty(pdfPath))
                         {
                             var email = new Email
                             {
@@ -115,7 +122,7 @@ namespace PayrollAutomation
             });
 
             // Close the progress window
-            progressWindow.Close();
+            await Dispatcher.InvokeAsync(() => progressWindow.Close());
 
             WinForms.MessageBox.Show("PDF Generation complete.");
         }

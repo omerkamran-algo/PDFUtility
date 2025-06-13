@@ -101,7 +101,8 @@ namespace PayrollAutomation.Services
                         OtherNonTaxable = ParseDecimal(worksheet.Cell(row, headerMap["Other"]).GetString()),
 
                         //Net Earning
-                        NetSalariesPayable = ParseDecimal(worksheet.Cell(row, headerMap["Net Salaries Payable"]).GetString())
+                        NetSalariesPayable = ParseDecimal(worksheet.Cell(row, headerMap["Net Salaries Payable"]).GetString()),
+                        Email = worksheet.Cell(row, headerMap["Email"]).GetValue<string>() ?? string.Empty,
                     });
                 }
 
