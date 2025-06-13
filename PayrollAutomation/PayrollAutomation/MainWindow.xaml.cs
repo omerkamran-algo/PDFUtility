@@ -20,17 +20,33 @@ namespace PayrollAutomation
             lvStatus.ItemsSource = statusList;
         }
 
-        private void Browse_Click(object sender, RoutedEventArgs e)
+        private async  void Browse_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new WinForms.OpenFileDialog
             {
                 Filter = "Excel Files|*.xlsx"
             };
-            if (dialog.ShowDialog()== WinForms.DialogResult.OK)
+            if (dialog.ShowDialog() == WinForms.DialogResult.OK)
             {
                 txtExcelPath.Text = dialog.FileName;
 
-                var result = ExcelService.ReadEmployees(dialog.FileName, out employees);
+                // Show in-progress dialog
+                var progressWindow = new InProgressWindow
+                {
+                    Owner = this
+                };
+                progressWindow.Show();
+
+                // Run Excel parsing in background
+                string result = await Task.Run(() =>
+                {
+                    return ExcelService.ReadEmployees(dialog.FileName, out employees);
+                });
+
+                // Close in-progress dialog
+                progressWindow.Close();
+
+                // Show result
                 WinForms.MessageBox.Show(result);
             }
         }
