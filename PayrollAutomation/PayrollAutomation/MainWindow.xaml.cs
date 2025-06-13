@@ -63,43 +63,63 @@ namespace PayrollAutomation
             if (dialog.ShowDialog() != WinForms.DialogResult.OK)
                 return;
 
-            statusList.Clear();
-            string folderPath = dialog.SelectedPath;
-
-            foreach (var emp in employees)
+            // Show the InProgressWindow
+            var progressWindow = new InProgressWindow
             {
-                // Skip the 'TOTAL' row
-                if (emp.EmployeeName?.Trim().ToUpper() == "TOTAL")
-                    continue;
-                try
-                {
-                    string pdfPath = PdfService.GeneratePdf(emp, folderPath);
-                    string status = string.IsNullOrEmpty(pdfPath) ? "Failed" : "PDF Generated";
+                Owner = this
+            };
+            progressWindow.Show();
 
-                    if (chkSendEmail.IsChecked == true && !string.IsNullOrEmpty(pdfPath))
+            string folderPath = dialog.SelectedPath;
+            statusList.Clear();
+
+            // Run the PDF generation logic on a background task
+            await Task.Run(async () =>
+            {
+                foreach (var emp in employees)
+                {
+                    if (emp.EmployeeName?.Trim().ToUpper() == "TOTAL")
+                        continue;
+
+                    try
                     {
-                        var email = new Email
+                        string pdfPath = PdfService.GeneratePdf(emp, folderPath);
+                        string status = string.IsNullOrEmpty(pdfPath) ? "Failed" : "PDF Generated";
+
+                        if (chkSendEmail.IsChecked == true && !string.IsNullOrEmpty(pdfPath))
                         {
-                            To = emp.Email,
-                            Subject = "Your Payslip",
-                            Message = $"Dear {emp.EmployeeName},\n\nPlease find attached your payslip.",
-                            HasAttachment = true,
-                            AttachmentPath = pdfPath
-                        };
+                            var email = new Email
+                            {
+                                To = emp.Email,
+                                Subject = "Your Payslip",
+                                Message = $"Dear {emp.EmployeeName},\n\nPlease find attached your payslip.",
+                                HasAttachment = true,
+                                AttachmentPath = pdfPath
+                            };
 
-                        status = await EmailService.SendEmailAsync(email);
+                            // Send email on UI thread if it accesses UI elements
+                            status = await await Dispatcher.InvokeAsync(() => EmailService.SendEmailAsync(email));
+                        }
+
+                        await Dispatcher.InvokeAsync(() =>
+                            statusList.Add(new StatusItem { EmployeeName = emp.EmployeeName, Status = status })
+                        );
                     }
+                    catch (Exception ex)
+                    {
+                        await Dispatcher.InvokeAsync(() =>
+                            statusList.Add(new StatusItem { EmployeeName = emp.EmployeeName, Status = $"Error: {ex.Message}" })
+                        );
+                    }
+                }
+            });
 
-                    statusList.Add(new StatusItem { EmployeeName = emp.EmployeeName, Status = status });
-                }
-                catch (Exception ex)
-                {
-                    statusList.Add(new StatusItem { EmployeeName = emp.EmployeeName, Status = $"Error: {ex.Message}" });
-                }
-            }
+            // Close the progress window
+            progressWindow.Close();
 
             WinForms.MessageBox.Show("PDF Generation complete.");
         }
+
 
         public class StatusItem
         {

@@ -3,26 +3,39 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PayrollAutomation"
         mc:Ignorable="d"
         WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterOwner"
-        Width="228" Height="72"
-        Background="White"
+        Width="200" Height="100"
         ShowInTaskbar="False"
         Topmost="True">
     <Grid>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Processing..." FontSize="16" FontWeight="Bold" Margin="0,10"/>
-            <Canvas Width="40" Height="40">
-                <Ellipse Width="10" Height="10" Fill="Gray" Canvas.Left="15" Canvas.Top="0">
-                    <Ellipse.RenderTransform>
-                        <RotateTransform x:Name="spinnerRotate" CenterX="5" CenterY="20"/>
-                    </Ellipse.RenderTransform>
-                </Ellipse>
-            </Canvas>
-        </StackPanel>
+        <Border Background="White" CornerRadius="10" Padding="15">
+            <!-- Removed DropShadowEffect to hide border effect -->
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="Processing..."
+                           FontSize="14"
+                           Foreground="Black"
+                           FontWeight="SemiBold"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,8"/>
+                <Grid Width="24" Height="24">
+                    <Ellipse Stroke="Black" StrokeThickness="3" Opacity="0.3"/>
+                    <Canvas Width="24" Height="24">
+                        <Ellipse Width="6" Height="6" Fill="Black" Canvas.Left="9" Canvas.Top="0">
+                            <Ellipse.RenderTransform>
+                                <RotateTransform x:Name="spinnerRotate" CenterX="3" CenterY="12"/>
+                            </Ellipse.RenderTransform>
+                        </Ellipse>
+                    </Canvas>
+                </Grid>
+            </StackPanel>
+        </Border>
+
+        <!-- Spinner animation -->
         <Grid.Triggers>
             <EventTrigger RoutedEvent="Window.Loaded">
                 <BeginStoryboard>
