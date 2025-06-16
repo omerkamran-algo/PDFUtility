@@ -1,0 +1,138 @@
+/* styles.css */
+* {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+}
+.section-divider td {
+  border-top: 2pt solid black;
+}
+.blank_row
+{
+    height: 25px !important; /* overwrites any other rules */
+    background-color: #FFFFFF;
+}
+.s1 {
+  color: black;
+  font-family: Calibri, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 10pt;
+}
+.s2 {
+  color: black;
+  font-family: Calibri, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 9pt;
+}
+.s3 {
+  color: black;
+  font-family: Calibri, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: none;
+  font-size: 9pt;
+}
+.s4 {
+  color: #1F1F1E;
+  font-family: Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: none;
+  font-size: 8.5pt;
+}
+.s5 {
+  color: black;
+  font-family: Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: none;
+  font-size: 8.5pt;
+}
+.s6 {
+  color: black;
+  font-family: Verdana, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: none;
+  font-size: 8.5pt;
+}
+table,
+tbody {
+  vertical-align: top;
+  overflow: visible;
+}
+.border-2pt {
+  border-width: 2pt;
+  border-style: solid;
+}
+.bg-grey {
+  background-color: #D9D9D9;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.text-center {
+  text-align: center;
+}
+.p-left-1 {
+  padding-left: 1pt;
+}
+.p-left-2 {
+  padding-left: 2pt;
+}
+.p-right-2 {
+  padding-right: 2pt;
+}
+.p-right-11 {
+  padding-right: 11pt;
+}
+.p-top-1 {
+  padding-top: 1pt;
+}
+.p-top-2 {
+  padding-top: 2pt;
+}
+.p-top-5 {
+  padding-top: 5pt;
+}
+.line-height-10 {
+  line-height: 10pt;
+}
+.line-height-11 {
+  line-height: 11pt;
+}
+.line-height-12 {
+  line-height: 12pt;
+}
+.width-501 {
+  width: 501pt;
+}
+.width-286 {
+  width: 286pt;
+}
+.width-215 {
+  width: 215pt;
+}
+.width-149 {
+  width: 149pt;
+}
+.width-137 {
+  width: 137pt;
+}
+.width-112 {
+  width: 112pt;
+}
+.width-103 {
+  width: 103pt;
+}
+.logo-img {
+  width: 157px;
+  height: 49px;
+}

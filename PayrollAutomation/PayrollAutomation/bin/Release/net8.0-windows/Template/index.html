@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Salary Slip</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style type="text/css">
+        body {
+            font-family: Calibri, sans-serif;
+            font-size: 10pt;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .s1 {
+            font-size: 14pt;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .s2 {
+            font-weight: bold;
+        }
+
+        .s3 {
+            font-weight: normal;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+        }
+
+        td {
+            padding: 4px;
+            vertical-align: top;
+        }
+
+        .border {
+            border: 2px solid #000;
+        }
+
+        .gray {
+            background-color: #D9D9D9;
+            font-weight: bold;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .right {
+            text-align: right;
+        }
+
+        .logo img {
+            height: 45px;
+        }
+
+        .footer {
+            font-size: 8pt;
+        }
+        /* styles.css */
+        * {
+            margin: 0;
+            padding: 0;
+            text-indent: 0;
+        }
+
+        .section-divider td {
+            border-top: 2pt solid black;
+        }
+
+        .blank_row {
+            height: 25px !important; /* overwrites any other rules */
+            background-color: #FFFFFF;
+        }
+
+        .s1 {
+            color: black;
+            font-family: Calibri, sans-serif;
+            font-style: normal;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 10pt;
+        }
+
+        .s2 {
+            color: black;
+            font-family: Calibri, sans-serif;
+            font-style: normal;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 9pt;
+        }
+
+        .s3 {
+            color: black;
+            font-family: Calibri, sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            text-decoration: none;
+            font-size: 9pt;
+        }
+
+        .s4 {
+            color: #1F1F1E;
+            font-family: Arial, sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            text-decoration: none;
+            font-size: 8.5pt;
+        }
+
+        .s5 {
+            color: black;
+            font-family: Arial, sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            text-decoration: none;
+            font-size: 8.5pt;
+        }
+
+        .s6 {
+            color: black;
+            font-family: Verdana, sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            text-decoration: none;
+            font-size: 8.5pt;
+        }
+
+        table,
+        tbody {
+            vertical-align: top;
+            overflow: visible;
+        }
+
+        .border-2pt {
+            border-width: 2pt;
+            border-style: solid;
+        }
+
+        .bg-grey {
+            background-color: #D9D9D9;
+        }
+
+        .text-left {
+            text-align: left;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .p-left-1 {
+            padding-left: 1pt;
+        }
+
+        .p-left-2 {
+            padding-left: 2pt;
+        }
+
+        .p-right-2 {
+            padding-right: 2pt;
+        }
+
+        .p-right-11 {
+            padding-right: 11pt;
+        }
+
+        .p-top-1 {
+            padding-top: 1pt;
+        }
+
+        .p-top-2 {
+            padding-top: 2pt;
+        }
+
+        .p-top-5 {
+            padding-top: 5pt;
+        }
+
+        .line-height-10 {
+            line-height: 10pt;
+        }
+
+        .line-height-11 {
+            line-height: 11pt;
+        }
+
+        .line-height-12 {
+            line-height: 12pt;
+        }
+
+        .width-501 {
+            width: 501pt;
+        }
+
+        .width-286 {
+            width: 286pt;
+        }
+
+        .width-215 {
+            width: 215pt;
+        }
+
+        .width-149 {
+            width: 149pt;
+        }
+
+        .width-137 {
+            width: 137pt;
+        }
+
+        .width-112 {
+            width: 112pt;
+        }
+
+        .width-103 {
+            width: 103pt;
+        }
+
+        .logo-img {
+            width: 157px;
+            height: 49px;
+        }
+    </style>
+</head>
+<body>
+
+    <center>
+        <table class="border , width-501" style="margin-left: 11.325pt;border-collapse:collapse;margin-left:11.325pt" cellspacing="0">
+            <tbody>
+                <!-- Start Dev Section: Company Name and Logo Side by Side -->
+                <tr>
+                    <td colspan="4">
+                        <table width="100%" style="border-collapse: collapse;">
+                            <tr>
+                                <!-- Company Logo -->
+                                <td style="width: 20%; text-align: left;">
+                                    <img class="logo-img" src="data:image/png;base64,{{LogoBase64}}" alt="Company Logo" />
+                                </td>
+                                <!-- Company Name and Salary Slip Info -->
+                                <td style="text-align: center;">
+                                    <div class="s1">ALGOMUS PRIVATE LIMITED</div>
+                                    <div class="s2">SALARY SLIP FMO {{PayMonth}} {{PayYear}}</div>
+                                </td>
+                                <!-- Empty placeholder (for future or spacing) -->
+                                <td style="width: 20%;"></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- End Dev Section -->
+                <tr class="section-divider">
+                    <td class="s2">Employee ID</td>
+                    <td class="s3 right" style="border-right: 2pt solid black;">{{EmployeeID}}</td>
+                    <td class="s2">Designation</td>
+                    <td class="s3 right">{{Designation}}</td>
+                </tr>
+                <tr>
+                    <td class="s2">Name</td>
+                    <td class="s3 right" style="border-right: 2pt solid black;">{{EmployeeName}}</td>
+                    <td class="s2">Grade</td>
+                    <td class="s3 right">{{Grade}}</td>
+                </tr>
+                <tr>
+                    <td class="s2">Deptt</td>
+                    <td class="s3 right" style="border-right: 2pt solid black;">{{Deptt}}</td>
+                    <td class="s2">Bank Name</td>
+                    <td class="s3 right">{{BankName}}</td>
+                </tr>
+                <tr>
+                    <td class="s2">CNIC No:</td>
+                    <td class="s3 right" style="border-right: 2pt solid black;">{{CNIC}}</td>
+                    <td class="s2">Pay month</td>
+                    <td class="s3 right">{{PayMonth}}, {{PayYear}}</td>
+                </tr>
+                <tr>
+                    <td class="s2">NTN</td>
+                    <td class="s3 right" style="border-right: 2pt solid black;">{{NTN}}</td>
+                    <td class="s2">Pay Location</td>
+                    <td class="s3 right">{{PayLocation}}</td>
+                </tr>
+
+                <!-- Earnings & Deductions Headers -->
+                <tr class="gray center section-divider">
+                    <td colspan="2" style="border-right: 2pt solid black;">EARNINGS</td>
+                    <td colspan="2">DEDUCTIONS</td>
+                </tr>
+                <tr class="gray center section-divider">
+                    <td colspan="2" style="border-right: 2pt solid black;">TAXABLE</td>
+                    <td colspan="2">TAXES</td>
+                </tr>
+
+                <!-- Main earnings/deductions -->
+                <tr class="section-divider">
+                    <td>GROSS PAY</td>
+                    <td class="right" style="border-right: 2pt solid black;">{{GrossSalaryFMO}}</td>
+                    <td>INCOME TAX</td>
+                    <td class="right">{{TaxDeductionFromSalary}}</td>
+                </tr>
+                <tr>
+                    <td>ARREARS</td>
+                    <td class="right" style="border-right: 2pt solid black;">{{Arrears}}</td>
+                    <td>PROFESSIONAL TAX</td>
+                    <td class="right">{{ProfessionalTax}}</td>
+                </tr>
+                <tr>
+                    <td>BONUS</td>
+                    <td class="right" style="border-right: 2pt solid black;">{{Bonus}}</td>
+                    <td></td>
+                    <td class="right"></td>
+                </tr>
+                <tr>
+                    <td>LEAVE ENCASHMENT</td>
+                    <td class="right" style="border-right: 2pt solid black;">{{LeaveEncashment}}</td>
+                    <td></td>
+                    <td class="right"></td>
+                </tr>
+                <tr class="gray section-divider">
+                    <td>TOTAL</td>
+                    <td class="right" style="border-right: 2pt solid black;">{{TotalEarnings}}</td>
+                    <td>TOTAL</td>
+                    <td class="right">{{TotalTaxDeductions}}</td>
+                </tr>
+
+                <!-- Non-taxable & other deductions -->
+                <tr class="gray center section-divider">
+                    <td colspan="2" style="border-right: 2pt solid black;">NON TAXABLE</td>
+                    <td colspan="2">OTHER DEDUCTIONS</td>
+                </tr>
+                <tr class="section-divider">
+                    <td>FUEL</td>
+                    <td class="right" style="border-right: 2pt solid black;">{{Fuel}}</td>
+                    <td>MESS</td>
+                    <td class="right">{{MessDeduction}}</td>
+                </tr>
+                <tr>
+                    <td>OPD</td>
+                    <td class="right" style="border-right: 2pt solid black;">{{OPD}}</td>
+                    <td>EOBI</td>
+                    <td class="right">{{EOBI}}</td>
+                </tr>
+                <tr>
+                    <td>OTHER</td>
+                    <td class="right" style="border-right: 2pt solid black;">{{OtherNonTaxable}}</td>
+                    <td>OTHER</td>
+                    <td class="right">{{OtherDeductions}}</td>
+                </tr>
+                <tr class="gray section-divider">
+                    <td>TOTAL</td>
+                    <td class="right" style="border-right: 2pt solid black;">{{NonTaxableTotal}}</td>
+                    <td>TOTAL</td>
+                    <td class="right">{{TotalOtherDeductions}}</td>
+                </tr>
+                <tr class="blank_row">
+                    <td colspan="3"></td>
+                </tr>
+                <!-- Final summary -->
+                <tr class="gray section-divider">
+                    <td>TOTAL EARNINGS</td>
+                    <td class="right" style="border-right: 2pt solid black;">{{TotalNetEarnings}}</td>
+                    <td>TOTAL DEDUCTIONS</td>
+                    <td class="right">{{TotalDeduction}}</td>
+                </tr>
+                <tr class="gray section-divider">
+                    <td colspan="3" class="right">NET EARNINGS</td>
+                    <td class="right">{{NetSalariesPayable}}</td>
+                </tr>
+<tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4">
+                        This is a computer-generated statement and does not require any signature. </br>Discrepancies, if any, shall be raised to HR department within seven days.
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </center>
+    <!-- Footer -->
+
+
+</body>
+</html>
