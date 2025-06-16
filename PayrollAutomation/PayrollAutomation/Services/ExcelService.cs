@@ -102,7 +102,7 @@ namespace PayrollAutomation.Services
 
                         //Net Earning
                         NetSalariesPayable = ParseDecimal(worksheet.Cell(row, headerMap["Net Salaries Payable"]).GetString()),
-                        Email = worksheet.Cell(row, headerMap["Email"]).GetValue<string>() ?? string.Empty,
+                       // Email = worksheet.Cell(row, headerMap["Email"]).GetValue<string>() ?? string.Empty,
                     });
                 }
 
