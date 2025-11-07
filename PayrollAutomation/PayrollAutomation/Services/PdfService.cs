@@ -13,8 +13,9 @@ namespace PayrollAutomation.Services
         {
             if (!Directory.Exists(folderPath))
                 Directory.CreateDirectory(folderPath);
-
-            string fileName = $"{payroll.EmployeeName.Replace(" ", "_")}_PaySlip.pdf";
+            
+            DateTime now = DateTime.Now;
+            string fileName = $"{payroll.EmployeeName.Replace(" ", "_")}_{payroll.PayMonth}_{now.Year}.pdf";
             string fullPath = Path.Combine(folderPath, fileName);
 
             // Load HTML Template and replace placeholders
